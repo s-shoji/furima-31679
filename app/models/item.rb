@@ -7,5 +7,13 @@ class Item < ApplicationRecord
   belongs_to :shipping_cost
   belongs_to :prefecture
   belongs_to :shipping_days
-  
+
+  validates :name, :description, :price, :user, presence: true
+
+  #ジャンルの選択が「--」の時は保存できないようにする
+  validates :category_id, numericality: { other_than: 0 }
+  validates :status_id, numericality: { other_than: 0 }
+  validates :shipping_cost_id, numericality: { other_than: 0 }
+  validates :prefecture_id, numericality: { other_than: 0 }
+  validates :shipping_days_id, numericality: { other_than: 0 }
 end
