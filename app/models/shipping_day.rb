@@ -1,5 +1,4 @@
-class ShippingDay < ApplicationRecord
-  ActiveHash::Base
+class ShippingDay < ActiveHash::Base
   self.data = [
     { id: 0, name: '--' },   # ←こちらに注目しましょう
     { id: 1, name: '1~2日で発送' },
