@@ -68,7 +68,7 @@ describe User do
         @user.last_name = ''
         @user.first_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください", "Last name 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include('First name 全角文字を使用してください', 'Last name 全角文字を使用してください')
       end
       it 'ユーザー本名のフリガナは、名字と名前でそれぞれ必須である' do
         @user.last_name_kana = ''
@@ -80,7 +80,7 @@ describe User do
         @user.last_name_kana = 'あべ'
         @user.first_name_kana = 'ゆうた'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana 全角（カタカナ）を使用してください", "Last name kana 全角（カタカナ）を使用してください")
+        expect(@user.errors.full_messages).to include('First name kana 全角（カタカナ）を使用してください', 'Last name kana 全角（カタカナ）を使用してください')
       end
       it '生年月日が必須である' do
         @user.birthday = ''
