@@ -58,6 +58,35 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+      it 'ユーザー本名は、名字と名前それぞれが必須である' do
+        @user.last_name = ''
+        @user.first_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name can't be blank", "Last name can't be blank")
+      end
+      it 'ユーザー本名は、全角（漢字・ひらがな・カタカナ）で入力させる' do
+        @user.last_name = ''
+        @user.first_name = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください", "Last name 全角文字を使用してください")
+      end
+      it 'ユーザー本名のフリガナは、名字と名前でそれぞれ必須である' do
+        @user.last_name_kana = ''
+        @user.first_name_kana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana can't be blank", "Last name kana can't be blank")
+      end
+      it 'ユーザー本名のフリガナは、全角（カタカナ）で入力させる' do
+        @user.last_name_kana = 'あべ'
+        @user.first_name_kana = 'ゆうた'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana 全角（カタカナ）を使用してください", "Last name kana 全角（カタカナ）を使用してください")
+      end
+      it '生年月日が必須である' do
+        @user.birthday = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Birthday can't be blank")
+      end
     end
   end
 end
