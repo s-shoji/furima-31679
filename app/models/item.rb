@@ -11,13 +11,12 @@ class Item < ApplicationRecord
 
   validates :name, :description, :price, :user, :image, presence: true
 
-  #ジャンルの選択が「--」の時は保存できないようにする
+  # ジャンルの選択が「--」の時は保存できないようにする
   validates :category_id, numericality: { other_than: 0 }
   validates :status_id, numericality: { other_than: 0 }
   validates :shipping_cost_id, numericality: { other_than: 0 }
   validates :prefecture_id, numericality: { other_than: 0 }
   validates :shipping_days_id, numericality: { other_than: 0 }
-  validates :price, numericality: { greater_than: 300, less_than: 9999999},
-  format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください' }
-
+  validates :price, numericality: { greater_than: 300, less_than: 9_999_999 },
+                    format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください' }
 end
