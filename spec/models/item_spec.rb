@@ -31,25 +31,50 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Category is not a number')
       end
+      it 'カテゴリーidが0だとアイテムは保存できない' do
+        @item.category_id = '0'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be other than 0')
+      end
       it '商品の状態がないとアイテムは保存できない' do
         @item.status_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Status is not a number')
       end
+      it '商品の状態idが0だとアイテムは保存できない' do
+        @item.status_id = '0'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Status must be other than 0')
+      end
       it '配送料がないとアイテムは保存できない' do
-        @item.shipping_cost = nil
+        @item.shipping_cost_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping cost is not a number')
+      end
+      it '配送料idが0だとアイテムは保存できない' do
+        @item.shipping_cost_id = '0'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping cost must be other than 0')
       end
       it '発送元の地域がないとアイテムは保存できない' do
         @item.prefecture_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefecture is not a number')
       end
+      it '発送元の地域idが0だとアイテムは保存できない' do
+        @item.prefecture_id = '0'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 0')
+      end
       it '発送までの日数がないとアイテムは保存できない' do
         @item.shipping_days_id = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('Shipping days is not a number')
+      end
+      it '発送までの日数idが0だとアイテムは保存できない' do
+        @item.shipping_days_id = '0'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping days must be other than 0')
       end
       it '金額がないとアイテムは保存できない' do
         @item.price = nil
