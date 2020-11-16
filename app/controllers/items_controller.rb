@@ -21,9 +21,11 @@ class ItemsController < ApplicationController
   end
 
   def show
+    
   end
 
   def edit
+    
   end
 
   def update
@@ -36,8 +38,11 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    redirect_to root_path if item.destroy
+    if item.destroy
+      redirect_to root_path
+    end
   end
+
 
   private
 
