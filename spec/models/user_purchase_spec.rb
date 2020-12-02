@@ -6,7 +6,7 @@ RSpec.describe UserPurchase, type: :model do
       @user_purchase = FactoryBot.build(:user_purchase)
     end
 
-    context '購入がうまくいくとき' do 
+    context '購入がうまくいくとき' do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@user_purchase).to be_valid
       end
