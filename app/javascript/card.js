@@ -33,5 +33,3 @@ const pay = () => {
 };
 
 window.addEventListener("load", pay);
-
-// 4242424242424242

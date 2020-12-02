@@ -14,7 +14,6 @@ class UserPurchase
   end
 
   def save
-    # item = Item.find(params[:item_id])
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
 
     Destination.create(postal_code: postal_code, prefecture_id: prefecture_id,
