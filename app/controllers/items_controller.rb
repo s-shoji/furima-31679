@@ -21,11 +21,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
-    
   end
 
   def update
@@ -44,7 +42,6 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
 
   private
 
