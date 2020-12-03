@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: :index
   before_action :set_item, only: [:index, :create]
   before_action :move_to_top, only: :index
-
+  before_action :move_top, only: :index
   def index
     @user_purchase = UserPurchase.new
   end
@@ -42,4 +42,9 @@ class OrdersController < ApplicationController
   def move_to_top
     redirect_to root_path if @item.user_id == current_user.id
   end
+
+  def move_top
+    redirect_to root_path if @item.purchase.present?
+  end
+    
 end
